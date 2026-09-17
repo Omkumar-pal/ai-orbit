@@ -29,7 +29,7 @@ export default function Header() {
   const isDetailPage = isCompanyDetail || isTaskDetail || isToolDetail || isAgentDetail || isNewsDetail || isVideoDetail || isModelDetail || isDeviceDetail || isRobotDetail || isRepoDetail || isMcpDetail;
   return (
     <header className="site-header">
-      <div className="topbar"><div className="brand"><button className="menu-button" aria-label="Open navigation menu">☰</button><Link href="/" className="brand"><span className="orbit">◒</span>AIORBIT</Link></div><div className="header-actions"><Link href="/submit" className="submit-button">＋ Submit Tool</Link><span className="login-button">Log In</span></div></div>
+      <div className="topbar"><div className="brand"><Link href="/" className="brand"><span className="orbit">◒</span>AIORBIT</Link></div><div className="header-actions"><Link href="/submit" className="submit-button">＋ Submit Tool</Link><span className="login-button">Log In</span></div></div>
       {!isDetailPage && (
       <div className="hero-rail"><h1>The Home of Everything AI</h1><form className="global-search" onSubmit={submitSearch}><span>⌕</span><input value={search} onChange={(event) => setSearch(event.target.value)} placeholder="Search AI tools, models, companies..." aria-label="Search the AI ecosystem" /><kbd>⌘ K</kbd></form><div className="filter-pills">{topFilters.map((filter) => <button key={filter.value} onClick={() => setActiveFilter(activeFilter === filter.value ? null : filter.value)} className={activeFilter === filter.value ? "active" : ""}>{filter.icon} {filter.label}</button>)}</div><nav className="rail-tabs">{tabs.map(([label, href]) => <Link key={label} href={href} className={pathname === href ? "active" : ""}>{label}</Link>)}</nav></div>
       )}
