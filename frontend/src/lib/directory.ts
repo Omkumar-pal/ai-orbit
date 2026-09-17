@@ -124,6 +124,20 @@ function titleCase(v: string | null | undefined): string | null {
   return v.toLowerCase().replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
 }
 
+// Live counts for the homepage "Explore the Ecosystem" cards.
+// Six cheap indexed COUNT(*) queries — no rows fetched.
+export async function exploreCounts() {
+  const [tools, agents, models, companies, devices, robots] = await Promise.all([
+    prisma.tool.count(),
+    prisma.agent.count(),
+    prisma.model.count(),
+    prisma.company.count(),
+    prisma.device.count(),
+    prisma.robot.count(),
+  ]);
+  return { tools, agents, models, companies, devices, robots };
+}
+
 // Raw Model live fetch — merged table (mock_aiorbit, 600+ rows: raw dump + task links)
 export async function modelsFor() {
   return prisma.model.findMany({ orderBy: [{ name: "asc" }] });
