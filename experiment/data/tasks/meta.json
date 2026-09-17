@@ -1,0 +1,12 @@
+{
+  "component": "tasks",
+  "type": "pageNumber",
+  "endpoint": "/api/v1/tasks",
+  "totalRecords": 115,
+  "downloadedRecords": 115,
+  "requestsMade": 2,
+  "fileSizeBytes": 85915,
+  "durationSeconds": 0.95,
+  "exhausted": true,
+  "downloadedAt": "2026-09-16T20:24:16.004Z"
+}

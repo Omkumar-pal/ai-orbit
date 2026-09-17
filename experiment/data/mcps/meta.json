@@ -1,0 +1,12 @@
+{
+  "component": "mcps",
+  "type": "mcps",
+  "endpoint": "/api/v1/mcps",
+  "totalRecords": 209,
+  "downloadedRecords": 209,
+  "requestsMade": 3,
+  "fileSizeBytes": 2832856,
+  "durationSeconds": 3.67,
+  "exhausted": true,
+  "downloadedAt": "2026-09-16T20:24:23.825Z"
+}

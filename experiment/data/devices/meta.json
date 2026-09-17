@@ -1,0 +1,12 @@
+{
+  "component": "devices",
+  "type": "flatArray",
+  "endpoint": "/api/v1/devices",
+  "totalRecords": 556,
+  "downloadedRecords": 556,
+  "requestsMade": 1,
+  "fileSizeBytes": 579871,
+  "durationSeconds": 1.03,
+  "exhausted": true,
+  "downloadedAt": "2026-09-16T20:24:14.714Z"
+}

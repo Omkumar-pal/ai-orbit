@@ -1,0 +1,12 @@
+{
+  "component": "business",
+  "type": "pageNumber",
+  "endpoint": "/api/v1/tools/category/business",
+  "totalRecords": 2250,
+  "downloadedRecords": 2250,
+  "requestsMade": 23,
+  "fileSizeBytes": 5869542,
+  "durationSeconds": 20.94,
+  "exhausted": true,
+  "downloadedAt": "2026-09-16T20:25:32.308Z"
+}

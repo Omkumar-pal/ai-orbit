@@ -1,0 +1,43 @@
+{
+  "name": "mock-backend",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "db:up": "docker compose up -d",
+    "db:down": "docker compose down",
+    "db:logs": "docker compose logs -f db",
+    "pgadmin:up": "docker compose up -d pgadmin",
+    "pgadmin:logs": "docker compose logs -f pgadmin",
+    "prisma:generate": "prisma generate --schema=schema/schema.prisma",
+    "prisma:migrate": "prisma migrate dev --name add_directory_item --schema=schema/schema.prisma",
+    "prisma:studio": "prisma studio --schema=schema/schema.prisma --port 5555",
+    "studio": "prisma studio --schema=schema/schema.prisma --port 5555",
+    "seed": "node prisma/seed.mjs",
+    "seed:raw": "node prisma/seed-companies-raw.mjs",
+    "seed:tasks": "node prisma/seed-tasks-raw.mjs",
+    "seed:task-relations": "node prisma/seed-task-relations.mjs",
+    "seed:tools": "node prisma/seed-tools-raw.mjs",
+    "seed:agents": "node prisma/seed-agents-raw.mjs",
+    "seed:news": "node prisma/seed-news-raw.mjs",
+    "seed:videos": "node prisma/seed-videos-raw.mjs",
+    "seed:models": "node prisma/seed-models-raw.mjs",
+    "seed:robots": "node prisma/seed-robots-raw.mjs",
+    "seed:devices": "node prisma/seed-devices-raw.mjs",
+    "seed:repositories": "node prisma/seed-repositories-raw.mjs",
+    "seed:mcp": "node prisma/seed-mcp-raw.mjs",
+    "seed:companies": "node prisma/seed-companies-raw.mjs",
+    "dev": "next dev -p 3002"
+  },
+  "dependencies": {
+    "@prisma/client": "5.22.0",
+    "next": "16.3.5",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "prisma": "5.22.0",
+    "typescript": "^5"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "component": "news",
+  "retrievalType": "pageNumber",
+  "baseUrl": "https://ai-orbit.palamrendra-pm.workers.dev",
+  "endpointPattern": "/api/news",
+  "startedAt": "2026-09-16T20:57:15.047Z",
+  "completedAt": "2026-09-16T20:57:18.757Z",
+  "status": "failed",
+  "requestedPageSize": 50,
+  "reportedTotal": null,
+  "downloadedRecords": 0,
+  "requestsMade": 1,
+  "exhausted": false,
+  "pagination": null,
+  "responses": [],
+  "errors": [
+    "errors/error-000001.json"
+  ],
+  "failure": {
+    "message": "HTTP 503",
+    "capturedAt": "2026-09-16T20:57:18.757Z"
+  },
+  "durationSeconds": 3.71
+}

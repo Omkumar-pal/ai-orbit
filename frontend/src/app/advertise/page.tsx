@@ -1,0 +1,2 @@
+export const metadata={title:"Advertise | AI Orbit"};
+export default function Page(){return (<div className="mx-auto max-w-[1280px] px-4 py-10"><h1 className="text-2xl font-bold">Advertise</h1><p className="mt-2 text-sm text-zinc-600">Placements: Homepage Spotlight, Category Banner, Sidebar Banner, Featured Listing, Newsletter.</p><div className="mt-6 rounded-2xl border p-6 text-sm dark:border-zinc-800">Static replica of <code>/advertise</code> - content parity with live https://aiorbit.club/advertise. Wire forms to own Next.js API Routes.</div></div>);}

@@ -1,0 +1,2 @@
+export const metadata={title:"Terms | AI Orbit"};
+export default function Page(){return (<div className="mx-auto max-w-[1280px] px-4 py-10"><h1 className="text-2xl font-bold">Terms</h1><p className="mt-2 text-sm text-zinc-600">Terms of service replica.</p><div className="mt-6 rounded-2xl border p-6 text-sm dark:border-zinc-800">Static replica of <code>/terms</code> - content parity with live https://aiorbit.club/terms. Wire forms to own Next.js API Routes.</div></div>);}

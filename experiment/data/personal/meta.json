@@ -1,0 +1,12 @@
+{
+  "component": "personal",
+  "type": "pageNumber",
+  "endpoint": "/api/v1/tools/category/personal",
+  "totalRecords": 2292,
+  "downloadedRecords": 2292,
+  "requestsMade": 116,
+  "fileSizeBytes": 3724862,
+  "durationSeconds": 271.15,
+  "exhausted": true,
+  "downloadedAt": "2026-09-16T21:34:03.878Z"
+}

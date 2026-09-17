@@ -1,0 +1,12 @@
+{
+  "component": "videos",
+  "type": "offset",
+  "endpoint": "/api/v1/videos",
+  "totalRecords": 4951,
+  "downloadedRecords": 4951,
+  "requestsMade": 100,
+  "fileSizeBytes": 9380304,
+  "durationSeconds": 52.84,
+  "exhausted": true,
+  "downloadedAt": "2026-09-16T20:26:59.560Z"
+}

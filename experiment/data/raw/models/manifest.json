@@ -1,0 +1,80 @@
+{
+  "component": "models",
+  "retrievalType": "pageNumber",
+  "baseUrl": "https://ai-orbit.palamrendra-pm.workers.dev",
+  "endpointPattern": "/api/v1/models",
+  "startedAt": "2026-09-16T20:46:30.802Z",
+  "completedAt": "2026-09-16T20:46:34.945Z",
+  "status": "complete",
+  "requestedPageSize": 100,
+  "reportedTotal": 533,
+  "downloadedRecords": 533,
+  "requestsMade": 6,
+  "exhausted": true,
+  "pagination": {
+    "type": "page-number",
+    "pageParam": "page",
+    "sizeParam": "limit",
+    "requestedPageSize": 100,
+    "pagesDownloaded": 6
+  },
+  "responses": [
+    {
+      "file": "response-000001.json",
+      "url": "https://ai-orbit.palamrendra-pm.workers.dev/api/v1/models?page=1&limit=100",
+      "status": 200,
+      "bytes": 72850,
+      "checksum": "9ecdfd74",
+      "savedAt": "2026-09-16T20:46:31.407Z",
+      "page": 1
+    },
+    {
+      "file": "response-000002.json",
+      "url": "https://ai-orbit.palamrendra-pm.workers.dev/api/v1/models?page=2&limit=100",
+      "status": 200,
+      "bytes": 73544,
+      "checksum": "140781e6",
+      "savedAt": "2026-09-16T20:46:31.991Z",
+      "page": 2
+    },
+    {
+      "file": "response-000003.json",
+      "url": "https://ai-orbit.palamrendra-pm.workers.dev/api/v1/models?page=3&limit=100",
+      "status": 200,
+      "bytes": 98417,
+      "checksum": "1c98391c",
+      "savedAt": "2026-09-16T20:46:32.783Z",
+      "page": 3
+    },
+    {
+      "file": "response-000004.json",
+      "url": "https://ai-orbit.palamrendra-pm.workers.dev/api/v1/models?page=4&limit=100",
+      "status": 200,
+      "bytes": 107815,
+      "checksum": "05909e69",
+      "savedAt": "2026-09-16T20:46:33.575Z",
+      "page": 4
+    },
+    {
+      "file": "response-000005.json",
+      "url": "https://ai-orbit.palamrendra-pm.workers.dev/api/v1/models?page=5&limit=100",
+      "status": 200,
+      "bytes": 108074,
+      "checksum": "1d1c87bc",
+      "savedAt": "2026-09-16T20:46:34.347Z",
+      "page": 5
+    },
+    {
+      "file": "response-000006.json",
+      "url": "https://ai-orbit.palamrendra-pm.workers.dev/api/v1/models?page=6&limit=100",
+      "status": 200,
+      "bytes": 36862,
+      "checksum": "cfed3903",
+      "savedAt": "2026-09-16T20:46:34.944Z",
+      "page": 6
+    }
+  ],
+  "errors": [],
+  "reportedTotalPages": 6,
+  "durationSeconds": 4.14
+}

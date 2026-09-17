@@ -1,0 +1,37 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: mock-aiorbit-db
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_DB: mock_aiorbit
+      POSTGRES_USER: aiorbit
+      POSTGRES_PASSWORD: aiorbit
+    volumes:
+      - mock_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U aiorbit -d mock_aiorbit"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: mock-aiorbit-pgadmin
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "5050:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@mock.aiorbit
+      PGADMIN_DEFAULT_PASSWORD: admin
+      PGADMIN_CONFIG_SERVER_MODE: "False"
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+
+volumes:
+  mock_pgdata:
+  pgadmin_data:

@@ -1,0 +1,12 @@
+{
+  "component": "news",
+  "type": "news",
+  "endpoint": "/api/v1/news",
+  "totalRecords": 1734,
+  "downloadedRecords": 1734,
+  "requestsMade": 35,
+  "fileSizeBytes": 1573862,
+  "durationSeconds": 20.69,
+  "exhausted": true,
+  "downloadedAt": "2026-09-16T20:26:06.635Z"
+}

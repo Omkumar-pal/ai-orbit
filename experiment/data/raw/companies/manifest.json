@@ -1,0 +1,233 @@
+{
+  "component": "companies",
+  "retrievalType": "pageNumber",
+  "baseUrl": "https://ai-orbit.palamrendra-pm.workers.dev",
+  "endpointPattern": "/api/v1/companies",
+  "startedAt": "2026-09-16T20:45:54.107Z",
+  "completedAt": "2026-09-16T20:46:07.401Z",
+  "status": "complete",
+  "requestedPageSize": 100,
+  "reportedTotal": 2234,
+  "downloadedRecords": 2234,
+  "requestsMade": 23,
+  "exhausted": true,
+  "pagination": {
+    "type": "page-number",
+    "pageParam": "page",
+    "sizeParam": "pageSize",
+    "requestedPageSize": 100,
+    "pagesDownloaded": 23
+  },
+  "responses": [
+    {
+      "file": "response-000001.json",
+      "url": "https://ai-orbit.palamrendra-pm.workers.dev/api/v1/companies?page=1&pageSize=100",
+      "status": 200,
+      "bytes": 83121,
+      "checksum": "8bb4f475",
+      "savedAt": "2026-09-16T20:45:54.622Z",
+      "page": 1
+    },
+    {
+      "file": "response-000002.json",
+      "url": "https://ai-orbit.palamrendra-pm.workers.dev/api/v1/companies?page=2&pageSize=100",
+      "status": 200,
+      "bytes": 84913,
+      "checksum": "671f8e13",
+      "savedAt": "2026-09-16T20:45:55.228Z",
+      "page": 2
+    },
+    {
+      "file": "response-000003.json",
+      "url": "https://ai-orbit.palamrendra-pm.workers.dev/api/v1/companies?page=3&pageSize=100",
+      "status": 200,
+      "bytes": 81409,
+      "checksum": "01ce11de",
+      "savedAt": "2026-09-16T20:45:55.821Z",
+      "page": 3
+    },
+    {
+      "file": "response-000004.json",
+      "url": "https://ai-orbit.palamrendra-pm.workers.dev/api/v1/companies?page=4&pageSize=100",
+      "status": 200,
+      "bytes": 82013,
+      "checksum": "91af8e68",
+      "savedAt": "2026-09-16T20:45:56.457Z",
+      "page": 4
+    },
+    {
+      "file": "response-000005.json",
+      "url": "https://ai-orbit.palamrendra-pm.workers.dev/api/v1/companies?page=5&pageSize=100",
+      "status": 200,
+      "bytes": 80678,
+      "checksum": "586a275b",
+      "savedAt": "2026-09-16T20:45:57.041Z",
+      "page": 5
+    },
+    {
+      "file": "response-000006.json",
+      "url": "https://ai-orbit.palamrendra-pm.workers.dev/api/v1/companies?page=6&pageSize=100",
+      "status": 200,
+      "bytes": 81119,
+      "checksum": "d4976d6a",
+      "savedAt": "2026-09-16T20:45:57.637Z",
+      "page": 6
+    },
+    {
+      "file": "response-000007.json",
+      "url": "https://ai-orbit.palamrendra-pm.workers.dev/api/v1/companies?page=7&pageSize=100",
+      "status": 200,
+      "bytes": 81107,
+      "checksum": "15ca12f0",
+      "savedAt": "2026-09-16T20:45:58.228Z",
+      "page": 7
+    },
+    {
+      "file": "response-000008.json",
+      "url": "https://ai-orbit.palamrendra-pm.workers.dev/api/v1/companies?page=8&pageSize=100",
+      "status": 200,
+      "bytes": 81099,
+      "checksum": "5ada0823",
+      "savedAt": "2026-09-16T20:45:58.737Z",
+      "page": 8
+    },
+    {
+      "file": "response-000009.json",
+      "url": "https://ai-orbit.palamrendra-pm.workers.dev/api/v1/companies?page=9&pageSize=100",
+      "status": 200,
+      "bytes": 82995,
+      "checksum": "b6d5c571",
+      "savedAt": "2026-09-16T20:45:59.333Z",
+      "page": 9
+    },
+    {
+      "file": "response-000010.json",
+      "url": "https://ai-orbit.palamrendra-pm.workers.dev/api/v1/companies?page=10&pageSize=100",
+      "status": 200,
+      "bytes": 80861,
+      "checksum": "3d12bc8f",
+      "savedAt": "2026-09-16T20:45:59.913Z",
+      "page": 10
+    },
+    {
+      "file": "response-000011.json",
+      "url": "https://ai-orbit.palamrendra-pm.workers.dev/api/v1/companies?page=11&pageSize=100",
+      "status": 200,
+      "bytes": 80369,
+      "checksum": "9d2cd336",
+      "savedAt": "2026-09-16T20:46:00.505Z",
+      "page": 11
+    },
+    {
+      "file": "response-000012.json",
+      "url": "https://ai-orbit.palamrendra-pm.workers.dev/api/v1/companies?page=12&pageSize=100",
+      "status": 200,
+      "bytes": 80324,
+      "checksum": "ccff9852",
+      "savedAt": "2026-09-16T20:46:01.016Z",
+      "page": 12
+    },
+    {
+      "file": "response-000013.json",
+      "url": "https://ai-orbit.palamrendra-pm.workers.dev/api/v1/companies?page=13&pageSize=100",
+      "status": 200,
+      "bytes": 82812,
+      "checksum": "fea14bd1",
+      "savedAt": "2026-09-16T20:46:01.620Z",
+      "page": 13
+    },
+    {
+      "file": "response-000014.json",
+      "url": "https://ai-orbit.palamrendra-pm.workers.dev/api/v1/companies?page=14&pageSize=100",
+      "status": 200,
+      "bytes": 82404,
+      "checksum": "daa9de1d",
+      "savedAt": "2026-09-16T20:46:02.131Z",
+      "page": 14
+    },
+    {
+      "file": "response-000015.json",
+      "url": "https://ai-orbit.palamrendra-pm.workers.dev/api/v1/companies?page=15&pageSize=100",
+      "status": 200,
+      "bytes": 81152,
+      "checksum": "25319df7",
+      "savedAt": "2026-09-16T20:46:02.723Z",
+      "page": 15
+    },
+    {
+      "file": "response-000016.json",
+      "url": "https://ai-orbit.palamrendra-pm.workers.dev/api/v1/companies?page=16&pageSize=100",
+      "status": 200,
+      "bytes": 81168,
+      "checksum": "b67a690c",
+      "savedAt": "2026-09-16T20:46:03.324Z",
+      "page": 16
+    },
+    {
+      "file": "response-000017.json",
+      "url": "https://ai-orbit.palamrendra-pm.workers.dev/api/v1/companies?page=17&pageSize=100",
+      "status": 200,
+      "bytes": 81387,
+      "checksum": "0fb27efc",
+      "savedAt": "2026-09-16T20:46:03.914Z",
+      "page": 17
+    },
+    {
+      "file": "response-000018.json",
+      "url": "https://ai-orbit.palamrendra-pm.workers.dev/api/v1/companies?page=18&pageSize=100",
+      "status": 200,
+      "bytes": 80999,
+      "checksum": "7f157cd1",
+      "savedAt": "2026-09-16T20:46:04.426Z",
+      "page": 18
+    },
+    {
+      "file": "response-000019.json",
+      "url": "https://ai-orbit.palamrendra-pm.workers.dev/api/v1/companies?page=19&pageSize=100",
+      "status": 200,
+      "bytes": 81258,
+      "checksum": "5a4f40fd",
+      "savedAt": "2026-09-16T20:46:05.011Z",
+      "page": 19
+    },
+    {
+      "file": "response-000020.json",
+      "url": "https://ai-orbit.palamrendra-pm.workers.dev/api/v1/companies?page=20&pageSize=100",
+      "status": 200,
+      "bytes": 80635,
+      "checksum": "13264e50",
+      "savedAt": "2026-09-16T20:46:05.522Z",
+      "page": 20
+    },
+    {
+      "file": "response-000021.json",
+      "url": "https://ai-orbit.palamrendra-pm.workers.dev/api/v1/companies?page=21&pageSize=100",
+      "status": 200,
+      "bytes": 81020,
+      "checksum": "251fb098",
+      "savedAt": "2026-09-16T20:46:06.116Z",
+      "page": 21
+    },
+    {
+      "file": "response-000022.json",
+      "url": "https://ai-orbit.palamrendra-pm.workers.dev/api/v1/companies?page=22&pageSize=100",
+      "status": 200,
+      "bytes": 81271,
+      "checksum": "65a3ce99",
+      "savedAt": "2026-09-16T20:46:06.882Z",
+      "page": 22
+    },
+    {
+      "file": "response-000023.json",
+      "url": "https://ai-orbit.palamrendra-pm.workers.dev/api/v1/companies?page=23&pageSize=100",
+      "status": 200,
+      "bytes": 27604,
+      "checksum": "2821866e",
+      "savedAt": "2026-09-16T20:46:07.400Z",
+      "page": 23
+    }
+  ],
+  "errors": [],
+  "reportedTotalPages": 23,
+  "durationSeconds": 13.29
+}

@@ -1,0 +1,35 @@
+{
+  "component": "agents",
+  "retrievalType": "pageNumber",
+  "baseUrl": "https://ai-orbit.palamrendra-pm.workers.dev",
+  "endpointPattern": "/api/v1/agents",
+  "startedAt": "2026-09-16T20:46:28.975Z",
+  "completedAt": "2026-09-16T20:46:29.665Z",
+  "status": "complete",
+  "requestedPageSize": 100,
+  "reportedTotal": 10,
+  "downloadedRecords": 10,
+  "requestsMade": 1,
+  "exhausted": true,
+  "pagination": {
+    "type": "page-number",
+    "pageParam": "page",
+    "sizeParam": "pageSize",
+    "requestedPageSize": 100,
+    "pagesDownloaded": 1
+  },
+  "responses": [
+    {
+      "file": "response-000001.json",
+      "url": "https://ai-orbit.palamrendra-pm.workers.dev/api/v1/agents?page=1&pageSize=100",
+      "status": 200,
+      "bytes": 44748,
+      "checksum": "79dbf92b",
+      "savedAt": "2026-09-16T20:46:29.664Z",
+      "page": 1
+    }
+  ],
+  "errors": [],
+  "reportedTotalPages": 1,
+  "durationSeconds": 0.69
+}

@@ -1,0 +1,2 @@
+export const metadata={title:"Submit AI | AI Orbit"};
+export default function Page(){return (<div className="mx-auto max-w-[1280px] px-4 py-10"><h1 className="text-2xl font-bold">Submit AI</h1><p className="mt-2 text-sm text-zinc-600">Submit an AI Tool - POST to own /api/v1/tools Prisma.</p><div className="mt-6 rounded-2xl border p-6 text-sm dark:border-zinc-800">Static replica of <code>/submit</code> - content parity with live https://aiorbit.club/submit. Wire forms to own Next.js API Routes.</div></div>);}

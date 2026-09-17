@@ -1,0 +1,25 @@
+{
+  "completedAt": "2026-09-16T21:32:28.411Z",
+  "confirmed": true,
+  "previewTotals": [
+    {
+      "component": "personal",
+      "status": "available",
+      "httpStatus": 200,
+      "totalRecordsAtPreview": 2292
+    }
+  ],
+  "results": [
+    {
+      "component": "personal",
+      "status": "failed",
+      "retrievalType": "pageNumber",
+      "reportedTotal": null,
+      "downloadedRecords": 0,
+      "requestsMade": 113,
+      "exhausted": false,
+      "errors": 1,
+      "durationSeconds": 175.82
+    }
+  ]
+}

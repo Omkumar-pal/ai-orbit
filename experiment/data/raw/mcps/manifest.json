@@ -1,0 +1,53 @@
+{
+  "component": "mcps",
+  "retrievalType": "mcps",
+  "baseUrl": "https://ai-orbit.palamrendra-pm.workers.dev",
+  "endpointPattern": null,
+  "startedAt": "2026-09-16T20:46:34.948Z",
+  "completedAt": "2026-09-16T20:46:38.954Z",
+  "status": "complete",
+  "requestedPageSize": 100,
+  "reportedTotal": 209,
+  "downloadedRecords": 209,
+  "requestsMade": 3,
+  "exhausted": true,
+  "pagination": {
+    "type": "page-number",
+    "pageParam": "page",
+    "sizeParam": "limit",
+    "requestedPageSize": 100,
+    "pagesDownloaded": 3
+  },
+  "responses": [
+    {
+      "file": "response-000001.json",
+      "url": "https://ai-orbit.palamrendra-pm.workers.dev/api/v1/mcps?page=1&limit=100",
+      "status": 200,
+      "bytes": 1052741,
+      "checksum": "13db1033",
+      "savedAt": "2026-09-16T20:46:36.643Z",
+      "page": 1
+    },
+    {
+      "file": "response-000002.json",
+      "url": "https://ai-orbit.palamrendra-pm.workers.dev/api/v1/mcps?page=2&limit=100",
+      "status": 200,
+      "bytes": 1414427,
+      "checksum": "4093d2bf",
+      "savedAt": "2026-09-16T20:46:38.111Z",
+      "page": 2
+    },
+    {
+      "file": "response-000003.json",
+      "url": "https://ai-orbit.palamrendra-pm.workers.dev/api/v1/mcps?page=3&limit=100",
+      "status": 200,
+      "bytes": 67059,
+      "checksum": "f05daaa2",
+      "savedAt": "2026-09-16T20:46:38.954Z",
+      "page": 3
+    }
+  ],
+  "errors": [],
+  "reportedTotalPages": 3,
+  "durationSeconds": 4.01
+}

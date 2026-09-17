@@ -1,0 +1,12 @@
+{
+  "component": "tools",
+  "type": "pageNumber",
+  "endpoint": "/api/v1/tools",
+  "totalRecords": 2384,
+  "downloadedRecords": 2384,
+  "requestsMade": 24,
+  "fileSizeBytes": 6069203,
+  "durationSeconds": 19.03,
+  "exhausted": true,
+  "downloadedAt": "2026-09-16T20:25:11.315Z"
+}

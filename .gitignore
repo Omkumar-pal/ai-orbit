@@ -1,0 +1,30 @@
+# dependencies (all projects)
+*/node_modules/
+**/node_modules/
+
+# builds
+*/.next/
+**/.next/
+out/
+dist/
+
+# env files — NEVER commit live secrets (use Vercel env vars instead)
+.env
+.env.*
+!.env.example
+
+# logs
+*.log
+dev-boot.log
+studio-boot.log
+prisma-studio.log
+
+# vercel
+.vercel
+
+# local notes containing live secrets (Neon password, etc.)
+experiment/Note/instruction.md
+
+# OS / editor
+.DS_Store
+Thumbs.db

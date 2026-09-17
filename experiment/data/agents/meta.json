@@ -1,0 +1,12 @@
+{
+  "component": "agents",
+  "type": "pageNumber",
+  "endpoint": "/api/v1/agents",
+  "totalRecords": 10,
+  "downloadedRecords": 10,
+  "requestsMade": 1,
+  "fileSizeBytes": 28331,
+  "durationSeconds": 0.33,
+  "exhausted": true,
+  "downloadedAt": "2026-09-16T20:24:15.049Z"
+}

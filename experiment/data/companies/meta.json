@@ -1,0 +1,12 @@
+{
+  "component": "companies",
+  "type": "pageNumber",
+  "endpoint": "/api/v1/companies",
+  "totalRecords": 2234,
+  "downloadedRecords": 2234,
+  "requestsMade": 23,
+  "fileSizeBytes": 2415142,
+  "durationSeconds": 13.6,
+  "exhausted": true,
+  "downloadedAt": "2026-09-16T20:25:45.930Z"
+}

@@ -1,0 +1,12 @@
+{
+  "component": "models",
+  "type": "pageNumber",
+  "endpoint": "/api/v1/models",
+  "totalRecords": 533,
+  "downloadedRecords": 533,
+  "requestsMade": 6,
+  "fileSizeBytes": 654082,
+  "durationSeconds": 4.11,
+  "exhausted": true,
+  "downloadedAt": "2026-09-16T20:24:20.125Z"
+}

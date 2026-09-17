@@ -1,0 +1,12 @@
+{
+  "component": "repositories",
+  "type": "cursor",
+  "endpoint": "/api/v1/repositories",
+  "totalRecords": 10000,
+  "downloadedRecords": 10000,
+  "requestsMade": 100,
+  "fileSizeBytes": 12032908,
+  "durationSeconds": 83.37,
+  "exhausted": true,
+  "downloadedAt": "2026-09-16T20:28:23.038Z"
+}

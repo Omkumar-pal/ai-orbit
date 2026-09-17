@@ -1,0 +1,12 @@
+{
+  "component": "creativity",
+  "type": "pageNumber",
+  "endpoint": "/api/v1/tools/category/creativity",
+  "totalRecords": 972,
+  "downloadedRecords": 972,
+  "requestsMade": 10,
+  "fileSizeBytes": 2702994,
+  "durationSeconds": 8.4,
+  "exhausted": true,
+  "downloadedAt": "2026-09-16T20:24:52.214Z"
+}

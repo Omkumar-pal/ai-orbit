@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>.txt (Outlines) — AI Company Profile &amp; Overview | AI Orbit (Replica)</title>
+<meta name="description" content="Profile, tools, models and team details for Txt Outlines. UI replica for preview purposes." />
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #000000; --card: #0D0D10; --border: #1F1F24; --border2:#232326;
+    --muted: #A1A1AA; --faint: #71717A; --dim: #52525B;
+    --accent: #6E56CF; --accent-h: #7C63E8; --accent-l: #A78BFA;
+    --gold: #F5C84C; --green: #34d399;
+  }
+  body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: #fff; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; }
+  /* Header */
+  .topbar { position: sticky; top: 0; z-index: 50; width: 100%; border-bottom: 1px solid rgba(255,255,255,.08); background: rgba(0,0,0,.8); backdrop-filter: blur(12px); }
+  .topbar-inner { max-width: 1440px; margin: 0 auto; padding: 6px 14px; display: flex; align-items: center; justify-content: space-between; position: relative; }
+  @media(min-width:640px){ .topbar-inner{ padding: 6px 32px; } }
+  .nav-center { display: none; }
+  @media(min-width:1024px){ .nav-center{ display: flex; gap: 32px; position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); } .nav-center a{ font-size: 12px; font-weight: 700; color: #a1a1aa; text-decoration: none; } .nav-center a:hover{ color:#fff; } .nav-center a.active{ color: var(--accent); } }
+  .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; font-weight: 900; letter-spacing: .06em; font-size: 15px; }
+  .logo-mark { width: 28px; height: 28px; border-radius: 8px; background: linear-gradient(135deg,#6E56CF,#a78bfa); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 900; }
+  .logo small { display:block; font-size: 9px; letter-spacing:.28em; color: var(--muted); font-weight:700; }
+  .top-actions { display: flex; align-items: center; gap: 8px; }
+  .btn-submit { display: inline-flex; height: 28px; align-items: center; gap: 6px; border-radius: 999px; padding: 0 12px; font-size: 11px; font-weight: 700; background: var(--accent); color: #fff; text-decoration: none; border: 0; }
+  .btn-submit:hover { filter: brightness(1.1); }
+  .menu-btn { display: flex; width: 32px; height: 32px; align-items: center; justify-content: center; border-radius: 8px; border: 1px solid rgba(255,255,255,.1); background: rgba(255,255,255,.05); color: #fff; }
+  @media(min-width:768px){ .menu-btn{ display:none; } }
+  /* Layout */
+  .wrap { max-width: 1440px; margin: 0 auto; padding: 12px 20px 40px; }
+  @media(min-width:640px){ .wrap{ padding: 16px 32px 48px; } }
+  @media(min-width:1024px){ .wrap{ padding-left:40px; padding-right:40px; } }
+  .crumbs { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--faint); font-weight: 500; flex-wrap: wrap; margin-bottom: 12px; }
+  @media(min-width:640px){ .crumbs{ margin-bottom:16px; font-size:12px; } }
+  .crumbs a { color: var(--faint); text-decoration: none; display:inline-flex; align-items:center; gap:4px; }
+  .crumbs a:hover { color:#fff; }
+  .crumbs .cur { color:#fff; font-weight:600; display:inline-flex; align-items:center; gap:6px; max-width: 320px; }
+  .crumbs .cur img { width:16px; height:16px; border-radius:4px; object-fit:contain; }
+  .grid { display: grid; grid-template-columns: 1fr; gap: 16px; align-items: start; }
+  @media(min-width:1024px){ .grid{ grid-template-columns: minmax(0,1fr) 320px; gap: 28px; } }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; box-shadow: 0 25px 50px -12px rgba(0,0,0,.8); position: relative; overflow: hidden; }
+  @media(min-width:640px){ .card{ border-radius: 20px; } }
+  .hero { padding: 20px; }
+  @media(min-width:640px){ .hero{ padding:24px; } }
+  @media(min-width:1024px){ .hero{ padding:28px; } }
+  .glow-yellow { position:absolute; top:-96px; right:-80px; width:320px; height:320px; background: rgba(245,200,76,.10); border-radius:999px; filter: blur(60px); pointer-events:none; }
+  .dots { position:absolute; top:0; right:0; width:50%; height:100%; opacity:.4; pointer-events:none; overflow:hidden; }
+  .dots::after{ content:""; position:absolute; top:-32px; right:32px; width:320px; height:176px; background-image: radial-gradient(circle at center, rgba(110,86,207,.35) 1px, transparent 1px); background-size:14px 14px; mask-image: linear-gradient(to bottom left, black, transparent 75%); }
+  .hero-top { position:relative; z-index:1; }
+  .title-row { display:flex; align-items:flex-end; gap:12px; flex-wrap:wrap; margin-bottom:16px; }
+  h1 { font-size: 30px; line-height:1; letter-spacing:-0.02em; font-weight:900; }
+  @media(min-width:640px){ h1{ font-size:36px; } }
+  @media(min-width:1024px){ h1{ font-size:42px; } }
+  .pill-sector { color:#fff; font-size:12px; font-weight:700; background:#1C1C20; border:1px solid #2B2B30; padding:4px 10px; border-radius:8px; text-decoration:none; }
+  .pill-sector:hover{ border-color: var(--accent); color: var(--accent-l); }
+  .desc { color: var(--muted); font-size:14px; line-height:28px; max-width:768px; margin-bottom:24px; }
+  @media(min-width:640px){ .desc{ font-size:15px; } }
+  .stats { display:grid; grid-template-columns: 1fr 1fr; gap:16px 16px; padding-top:20px; border-top:1px solid var(--border); }
+  @media(min-width:640px){ .stats{ grid-template-columns: repeat(4,1fr); } }
+  @media(min-width:1024px){ .stats{ grid-template-columns: repeat(8,1fr); } }
+  .stat-l { color: var(--faint); font-size:11px; font-weight:600; margin-bottom:6px; }
+  .stat-v { font-size:14px; font-weight:700; }
+  .yes{ color:#34d399; } .no{ color:#f87171; } .na{ color: var(--dim); }
+  .flag { display:inline-flex; align-items:center; gap:6px; background:#1C1C20; border:1px solid #2B2B30; border-radius:999px; padding:4px 10px; font-size:11px; font-weight:600; max-width:100%; }
+  .flag img{ width:14px; height:14px; border-radius:999px; object-fit:cover; }
+  /* Tabs */
+  .tabs { display:flex; gap:6px; overflow-x:auto; padding-bottom:12px; margin-top:12px; border-bottom:1px solid var(--border); scrollbar-width:none; }
+  .tabs::-webkit-scrollbar{ display:none; }
+  .tab { border-radius:12px; padding:10px 14px; font-size:12px; font-weight:700; white-space:nowrap; display:inline-flex; align-items:center; gap:8px; border:1px solid var(--border2); background:#131316; color:var(--muted); cursor:pointer; }
+  .tab:hover{ color:#fff; }
+  .tab.active{ background: var(--accent); color:#fff; border-color: var(--accent); box-shadow: 0 8px 20px -8px rgba(110,86,207,.5); }
+  .tab .count{ font-size:10px; padding:2px 6px; border-radius:999px; background:#1C1C20; color:var(--faint); }
+  .tab.active .count{ background:rgba(255,255,255,.15); color:#fff; }
+  .panel h2{ font-size:20px; font-weight:800; margin:14px 0; }
+  @media(min-width:640px){ .panel h2{ font-size:24px; } }
+  .empty { background:var(--card); border:1px solid var(--border); border-radius:16px; padding:32px; text-align:center; color:var(--faint); font-size:13px; }
+  @media(min-width:640px){ .empty{ padding:48px; font-size:14px; } }
+  .empty b{ display:block; color:#fff; margin-bottom:4px; font-size:14px; }
+  .empty span{ color:var(--dim); font-size:12px; }
+  /* Sidebar */
+  aside.side { background:var(--card); border:1px solid var(--border); border-radius:16px; overflow:hidden; }
+  @media(min-width:640px){ aside.side{ border-radius:20px; } }
+  .side-top{ padding:20px; text-align:center; }
+  @media(min-width:640px){ .side-top{ padding:24px; } }
+  .logo-big { width:112px; height:112px; border-radius:24px; background:#141418; border:1px solid #26262B; display:flex; align-items:center; justify-content:center; overflow:hidden; padding:8px; margin:0 auto 16px; box-shadow: 0 10px 30px rgba(0,0,0,.5); }
+  @media(min-width:640px){ .logo-big{ width:192px; height:192px; border-radius:30px; } }
+  @media(min-width:1024px){ .logo-big{ width:176px; height:176px; } }
+  .logo-big img{ width:100%; height:100%; object-fit:contain; border-radius:18px; }
+  .side-name{ font-size:18px; font-weight:800; }
+  .side-meta{ text-align:left; margin-top:16px; display:grid; gap:10px; font-size:12px; color:var(--muted); }
+  .side-meta div{ display:flex; align-items:center; gap:10px; }
+  .side-meta svg{ color:var(--faint); flex-shrink:0; }
+  .side-btns{ margin-top:16px; display:grid; gap:10px; }
+  .btn-follow{ width:100%; height:40px; border:0; border-radius:12px; font-size:12px; font-weight:800; background:var(--accent); color:#fff; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:6px; }
+  .btn-follow:hover{ background: var(--accent-h); }
+  .btn-visit{ width:100%; height:40px; padding:0 16px; font-size:12px; font-weight:800; color:#fff; background:#131316; border:1px solid #2C2C32; border-radius:12px; display:flex; align-items:center; justify-content:center; gap:6px; text-decoration:none; }
+  .btn-visit:hover{ background:#1A1A1E; }
+  .btn-row{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .icon-btn{ height:40px; border-radius:12px; background:#131316; border:1px solid #2C2C32; color:var(--muted); cursor:pointer; display:flex; align-items:center; justify-content:center; }
+  .icon-btn:hover{ color:#fff; background:#1A1A1E; }
+  .side-sec{ border-top:1px solid var(--border); padding:16px 20px; text-align:left; }
+  @media(min-width:640px){ .side-sec{ padding:20px 24px; } }
+  .side-sec h3{ font-size:12px; font-weight:600; color:var(--muted); margin-bottom:12px; }
+  .social-row{ display:flex; align-items:center; justify-content:space-between; font-size:12px; color:var(--muted); text-decoration:none; padding:4px 0; }
+  .social-row:hover{ color:#fff; }
+  .joined{ font-size:14px; font-weight:700; }
+  .mobile-side{ display:block; }
+  @media(min-width:1024px){ .mobile-side{ display:none; } .desktop-side{ display:block !important; position:sticky; top:96px; } }
+  .desktop-side{ display:none; }
+  /* Footer */
+  footer{ border-top:1px solid #1C1C1F; background:#000; margin-top:24px; }
+  .led{ height: clamp(120px, 18vw, 220px); border-bottom:1px solid #1C1C1F; display:flex; align-items:center; justify-content:center; overflow:hidden; background: radial-gradient(ellipse at center, rgba(110,86,207,.15), transparent 70%), #000; }
+  .led span{ font-size: clamp(40px, 9vw, 120px); font-weight:900; letter-spacing:.35em; color:#111; text-shadow: 0 0 24px rgba(110,86,207,.25); user-select:none; }
+  .foot-inner{ max-width:1400px; margin:0 auto; padding:24px 16px 16px; }
+  @media(min-width:640px){ .foot-inner{ padding:40px 24px 12px; } }
+  @media(min-width:1024px){ .foot-inner{ padding-left:48px; padding-right:48px; } }
+  .foot-grid{ display:flex; flex-direction:column; gap:24px; }
+  @media(min-width:1024px){ .foot-grid{ flex-direction:row; gap:64px; } }
+  .foot-brand{ max-width:380px; }
+  .foot-brand p.t{ font-size:14px; color:#e4e4e7; margin:8px 0; }
+  .foot-brand p.d{ font-size:13px; color:var(--muted); line-height:1.6; margin-bottom:16px; max-width:320px; }
+  .socials{ display:flex; gap:16px; }
+  .socials a{ color:#fff; text-decoration:none; font-size:18px; }
+  .cols{ flex:1; display:grid; grid-template-columns: repeat(4,1fr); gap:12px 16px; }
+  .cols h4{ font-size:11px; font-weight:800; letter-spacing:.08em; margin-bottom:8px; }
+  .cols ul{ list-style:none; display:grid; gap:8px; }
+  .cols a{ font-size:12px; color:#e4e4e7; text-decoration:none; }
+  .cols a:hover{ color:#fff; }
+  .copy{ margin-top:16px; padding-top:12px; border-top:1px solid #27272a; display:flex; align-items:center; justify-content:space-between; color:var(--muted); font-size:12px; }
+  .replica-note{ max-width:1440px; margin:0 auto; padding:10px 20px; font-size:11px; color:var(--dim); }
+  .replica-note b{ color: var(--muted); }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <nav class="nav-center" aria-label="Primary">
+    <a href="#">Business AI</a>
+    <a href="#" class="active">Leaderboard</a>
+    <a href="#">Resources</a>
+    <a href="#">Newsletter</a>
+  </nav>
+  <div class="topbar-inner">
+    <div style="display:flex;align-items:center;gap:8px;">
+      <button class="menu-btn" aria-label="Open navigation menu">☰</button>
+      <a class="logo" href="#" aria-label="AI Orbit home">
+        <span class="logo-mark">◍</span>
+        <span>AI ORBIT<small>HOME OF AI</small></span>
+      </a>
+    </div>
+    <div class="top-actions">
+      <a class="btn-submit" href="#">＋ Submit Tool</a>
+    </div>
+  </div>
+</header>
+
+<div class="replica-note">UI replica for preview / study purposes — layout inspired by <b>aiorbit.club/companies/txt-outlines</b>. Data shown is public company info for “.txt (Outlines)”.</div>
+
+<main class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href="#">⌂ <span>Home</span></a>
+    <span style="color:#52525B">›</span>
+    <a href="#">Companies</a>
+    <span style="color:#52525B">›</span>
+    <a href="#">Software</a>
+    <span style="color:#52525B">›</span>
+    <span class="cur"><img src="https://www.google.com/s2/favicons?sz=128&domain=dottxt.co" alt="" /> <span>.txt (Outlines)</span></span>
+  </nav>
+
+  <div class="grid">
+    <div style="min-width:0;display:grid;gap:12px;">
+      <section class="card hero">
+        <div class="glow-yellow"></div>
+        <div class="dots"></div>
+        <div class="hero-top">
+          <div class="title-row">
+            <h1>.txt (Outlines)</h1>
+            <a class="pill-sector" href="#">Software</a>
+          </div>
+          <p class="desc">Creator of Outlines, an open-source library for structured text generation that guarantees LLM outputs conform to a given schema, format, or regular expression.</p>
+          <div class="stats">
+            <div><div class="stat-l">AI Native</div><div class="stat-v yes">Yes</div></div>
+            <div><div class="stat-l">Profitable</div><div class="stat-v no">No</div></div>
+            <div><div class="stat-l">Valuation</div><div class="stat-v na">—</div></div>
+            <div><div class="stat-l">$ Raised</div><div class="stat-v">$4.40M</div></div>
+            <div><div class="stat-l">Employees</div><div class="stat-v na">—</div></div>
+            <div><div class="stat-l">Total Tools</div><div class="stat-v">0</div></div>
+            <div><div class="stat-l">Total Models</div><div class="stat-v">0</div></div>
+            <div><div class="stat-l">Flagship Tool</div><div class="stat-v na">—</div></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card mobile-side" style="overflow:hidden;">
+        <div class="side-top">
+          <div class="logo-big"><img src="https://www.google.com/s2/favicons?sz=256&domain=dottxt.co" alt=".txt (Outlines)" /></div>
+          <div class="side-name">.txt (Outlines)</div>
+          <div class="side-meta">
+            <div>📍 <span>New York, NY, United States</span></div>
+            <div>🏢 <span>Founded 2024</span></div>
+          </div>
+          <div class="side-btns">
+            <button class="btn-follow" onclick="this.textContent=this.textContent.trim()==='+ Follow'? '✓ Following':'＋ Follow'">＋ Follow</button>
+            <a class="btn-visit" href="https://dottxt.co" target="_blank" rel="noopener">↗ Visit Website</a>
+            <div class="btn-row">
+              <button class="icon-btn" title="Bookmark">🔖</button>
+              <button class="icon-btn" title="Share" onclick="navigator.clipboard&&navigator.clipboard.writeText(location.href)">↗</button>
+            </div>
+          </div>
+        </div>
+        <div class="side-sec">
+          <h3>Social Links</h3>
+          <a class="social-row" href="https://dottxt.co" target="_blank" rel="noopener"><span>🌐 Website</span><span>↗</span></a>
+        </div>
+        <div class="side-sec">
+          <h3>Joined AIOrbit</h3>
+          <p class="joined">Sep 25, 2026</p>
+        </div>
+      </section>
+
+      <div class="tabs" role="tablist" id="tabs"></div>
+
+      <div class="panel" id="panel">
+        <h2 id="panelTitle">Tools (0)</h2>
+        <div class="empty" id="panelBody">No public AI tools listed yet for .txt (Outlines).</div>
+      </div>
+    </div>
+
+    <aside class="side desktop-side" aria-label="Company sidebar">
+      <div class="side-top">
+        <div class="logo-big"><img src="https://www.google.com/s2/favicons?sz=256&domain=dottxt.co" alt=".txt (Outlines)" /></div>
+        <div class="side-name">.txt (Outlines)</div>
+        <div class="side-meta">
+          <div>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>New York, NY, United States</span>
+          </div>
+          <div>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01M16 6h.01M12 6h.01M8 10h.01M16 10h.01M12 10h.01M8 14h.01M16 14h.01M12 14h.01"/></svg>
+            <span>Founded 2024</span>
+          </div>
+        </div>
+        <div class="side-btns">
+          <button class="btn-follow" id="followBtn">＋ Follow</button>
+          <a class="btn-visit" href="https://dottxt.co" target="_blank" rel="noopener">↗ Visit Website</a>
+          <div class="btn-row">
+            <button class="icon-btn" title="Bookmark Company">🔖</button>
+            <button class="icon-btn" title="Share Company" onclick="navigator.clipboard&&navigator.clipboard.writeText(location.href)">⤴</button>
+          </div>
+        </div>
+      </div>
+      <div class="side-sec">
+        <h3>Social Links</h3>
+        <a class="social-row" href="https://dottxt.co" target="_blank" rel="noopener"><span>🌐 &nbsp;Website</span><span style="color:#52525B">↗</span></a>
+      </div>
+      <div class="side-sec">
+        <h3>Joined AIOrbit</h3>
+        <p class="joined">Sep 25, 2026</p>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<footer>
+  <div class="led" aria-hidden="true"><span>AI ORBIT</span></div>
+  <div class="foot-inner">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="logo" href="#"><span class="logo-mark">◍</span><span>AI ORBIT</span></a>
+        <p class="t">The Home of Everything AI.</p>
+        <p class="d">Discover the tools, companies, and technologies shaping the global AI ecosystem.</p>
+        <div class="socials"><a href="#" aria-label="X">𝕏</a><a href="#" aria-label="LinkedIn">in</a><a href="#" aria-label="Instagram">◎</a><a href="#" aria-label="YouTube">▶</a><a href="#" aria-label="Discord">◈</a></div>
+      </div>
+      <div class="cols">
+        <div><h4>EXPLORE</h4><ul><li><a href="#">AI Tools</a></li><li><a href="#">AI Agents</a></li><li><a href="#">AI Models</a></li><li><a href="#">AI Companies</a></li><li><a href="#">AI Devices</a></li><li><a href="#">AI Robots</a></li></ul></div>
+        <div><h4>DISCOVER</h4><ul><li><a href="#">AI News</a></li><li><a href="#">AI Videos</a></li><li><a href="#">AI Trends</a></li><li><a href="#">AI Comparisons</a></li><li><a href="#">Leaderboard</a></li></ul></div>
+        <div><h4>ECOSYSTEM</h4><ul><li><a href="#">Repositories</a></li><li><a href="#">MCP</a></li><li><a href="#">Tasks</a></li><li><a href="#">Submit AI</a></li><li><a href="#">Advertise</a></li></ul></div>
+        <div><h4>COMPANY</h4><ul><li><a href="#">About</a></li><li><a href="#">Contact</a></li><li><a href="#">Write</a></li><li><a href="#">Press</a></li><li><a href="#">Privacy</a></li><li><a href="#">Terms</a></li></ul></div>
+      </div>
+    </div>
+    <div class="copy"><p>© 2026 AI Orbit. All rights reserved. (Replica)</p><button class="icon-btn" style="width:32px;height:32px;border-radius:999px;" onclick="scrollTo({top:0,behavior:'smooth'})" aria-label="Scroll to top">↑</button></div>
+  </div>
+</footer>
+
+<script>
+const TABS = [
+  { id:'tools', label:'Tools', count:0, title:'Tools (0)', body:'No public AI tools listed yet for .txt (Outlines).' },
+  { id:'models', label:'Models', count:0, title:'Models (0)', body:'<b>No foundation models listed yet</b><br><span>There are currently no public models indexed for .txt (Outlines).</span>', html:true },
+  { id:'devices', label:'Devices', count:0, title:'Devices (0)', body:'No public devices listed yet for .txt (Outlines).' },
+  { id:'repositories', label:'Repositories', count:0, title:'Repositories (0)', body:'No public repositories listed yet for .txt (Outlines).' },
+  { id:'robots', label:'Robots', count:0, title:'Robots (0)', body:'No public robots listed yet for .txt (Outlines).' },
+  { id:'news', label:'News', count:0, title:'News', body:'<b>No news listed yet</b><br><span>There are currently no public news records indexed for .txt (Outlines).</span>', html:true },
+  { id:'videos', label:'Videos', count:0, title:'Videos (0)', body:'<b>No videos listed yet</b><br><span>There are currently no public videos indexed for .txt (Outlines).</span>', html:true },
+  { id:'fundraises', label:'Fundraises', count:0, title:'Fundraises', body:'<b>No fundraises listed yet</b><br><span>There are currently no public fundraise records indexed for .txt (Outlines).</span>', html:true },
+  { id:'investments', label:'Investments', count:0, title:'Investments', body:'<b>No investments listed yet</b><br><span>There are currently no public investment records indexed for .txt (Outlines).</span>', html:true },
+];
+const tabsEl = document.getElementById('tabs');
+const titleEl = document.getElementById('panelTitle');
+const bodyEl = document.getElementById('panelBody');
+function render(active='tools'){
+  tabsEl.innerHTML='';
+  TABS.forEach(t=>{
+    const b=document.createElement('button');
+    b.className='tab'+(t.id===active?' active':'');
+    b.innerHTML = t.label + ' <span class="count">'+t.count+'</span>';
+    b.onclick=()=>render(t.id);
+    tabsEl.appendChild(b);
+  });
+  const cur=TABS.find(t=>t.id===active);
+  titleEl.textContent=cur.title;
+  if(cur.html){ bodyEl.innerHTML=cur.body; } else { bodyEl.textContent=cur.body; }
+}
+render();
+document.getElementById('followBtn')?.addEventListener('click', e=>{
+  const b=e.currentTarget;
+  b.textContent = b.textContent.includes('Following') ? '＋ Follow' : '✓ Following';
+});
+</script>
+</body>
+</html>

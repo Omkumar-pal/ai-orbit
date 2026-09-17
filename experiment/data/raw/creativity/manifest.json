@@ -1,0 +1,24 @@
+{
+  "component": "creativity",
+  "retrievalType": "pageNumber",
+  "baseUrl": "https://ai-orbit.palamrendra-pm.workers.dev",
+  "endpointPattern": "/api/v1/tools/category/creativity",
+  "startedAt": "2026-09-16T20:57:11.733Z",
+  "completedAt": "2026-09-16T20:57:15.045Z",
+  "status": "failed",
+  "requestedPageSize": 100,
+  "reportedTotal": null,
+  "downloadedRecords": 0,
+  "requestsMade": 1,
+  "exhausted": false,
+  "pagination": null,
+  "responses": [],
+  "errors": [
+    "errors/error-000001.json"
+  ],
+  "failure": {
+    "message": "HTTP 503",
+    "capturedAt": "2026-09-16T20:57:15.045Z"
+  },
+  "durationSeconds": 3.31
+}

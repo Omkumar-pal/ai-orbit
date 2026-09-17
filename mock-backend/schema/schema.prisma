@@ -1,0 +1,442 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Isolated mock DB (mock_aiorbit) — DirectoryItem heap stored as 8KB pages, MVCC tuples, WAL for durability
+enum Pricing {
+  Free
+  Freemium
+  Paid
+}
+
+model DirectoryItem {
+  id          String   @id @default(cuid())
+  resource    String   // "companies", "tools", "agents", "models", etc.
+  slug        String
+  name        String
+  description String
+  category    String
+  task        String
+  pricing     Pricing
+  api         Boolean  @default(false)
+  verified    Boolean  @default(false)
+  accent      String
+  isTrending  Boolean  @default(false)
+  popularity  Int?
+  rating      Float?
+  isNew       Boolean  @default(false)
+
+  @@unique([resource, slug])
+  @@index([resource])
+}
+
+// Raw Company — verbatim from experiment/data/companies/raw.json for live /companies fetch
+model Company {
+  id                 String   @id
+  slug               String   @unique
+  name               String
+  logoUrl            String?
+  description        String   @db.Text
+  website            String?
+  country            String?
+  city               String?
+  foundedYear        Int?
+  type               String[] // AI_NATIVE, etc.
+  sector             String?
+  verified           Boolean  @default(false)
+  featured           Boolean  @default(false)
+  valuation          String?
+  fundingRaised      String?
+  latestFundingRound String?
+  employeeCount      Int?
+  linkedinUrl        String?
+  twitterUrl         String?
+  views              Int      @default(0)
+  upvotes            Int      @default(0)
+  impressions        Int      @default(0)
+  createdAt          DateTime?
+  updatedAt          DateTime?
+  tools              Json?    @db.JsonB
+  aiModels           Json?    @db.JsonB
+  toolsCount         Int      @default(0)
+  aiModelsCount      Int      @default(0)
+
+  @@index([sector])
+  @@index([verified])
+  @@index([featured])
+}
+
+// Raw Task — verbatim from experiment/data/tasks/raw.json for live /tasks fetch
+model Task {
+  id           String   @id
+  slug         String   @unique
+  title        String
+  description  String   @db.Text
+  iconUrl      String?
+  categoryId   String?
+  categoryName String?
+  categorySlug String?
+  creator      String?
+  difficulty   String? // EASY | MEDIUM | ADVANCED (raw verbatim)
+  pricingModel String? // FREE | FREEMIUM | PAID (raw verbatim)
+  featured     Boolean  @default(false)
+  createdAt    DateTime?
+  likes        Int      @default(0)
+  subscribers  Int      @default(0)
+  saves        Int      @default(0)
+  resources    Int      @default(0)
+  tools        Int      @default(0)
+  models       Int      @default(0)
+  robots       Int      @default(0)
+  devices      Int      @default(0)
+  toolsRel   TaskTool[]
+  modelsRel  TaskModel[]
+  robotsRel  TaskRobot[]
+  devicesRel TaskDevice[]
+
+  @@index([categorySlug])
+  @@index([featured])
+}
+
+// Tool entity — upserted from live task API toolItems; linked to tasks many-to-many.
+// Extended with experiment/data/tools/raw.json fields so the detail page reads one row.
+model Tool {
+  id               String  @id
+  slug             String  @unique
+  name             String
+  logoUrl          String?
+  tagline          String? @db.Text
+  description      String? @db.Text
+  pricingModel     String?
+  pricingAmount    String?
+  billingFrequency String?
+  avgRating        Float?
+  upvoteCount      Int     @default(0)
+  reviewCount      Int     @default(0) // not in raw dump; future enrichment
+  hasApi           Boolean @default(false)
+  isOpenSource     Boolean @default(false)
+  isTrending       Boolean @default(false)
+  verified         Boolean @default(false)
+  compatibility    String?
+  releaseDate      DateTime?
+  launchDate       DateTime?
+  visitUrl         String?
+  useCases         String? // raw: single comma-joined string in a 1-elem array
+  categories       Json?   @db.JsonB // verbatim [{category:{slug,name}}]
+  tags             Json?   @db.JsonB // empty in raw dump
+  ttasks           Json?   @db.JsonB // verbatim [{task:{slug,title}}]
+  tasks            TaskTool[]
+}
+
+// Model entity — upserted from live task API popularModels (2 per task); linked many-to-many.
+// Extended with experiment/data/models/raw.json fields so the detail page reads one row.
+model Model {
+  id             String   @id @default(cuid())
+  slug           String   @unique
+  name           String
+  provider       String? // provider display name (kept for compatibility)
+  providerId     String?
+  providerSlug   String?
+  providerName   String?
+  providerLogo   String?
+  logoUrl        String?
+  modelType      String? // TEXT | IMAGE | AUDIO | CODE | MULTIMODAL | STRUCTURED_DATA
+  creator        String?
+  contextWindow  String? // raw verbatim (e.g. "512")
+  parameterSize  String? // raw verbatim (e.g. "66.4M")
+  modality       String?
+  releaseDate    String? // raw verbatim year string (e.g. "2026")
+  description    String?  @db.Text
+  websiteUrl     String?
+  capabilities   Json?    @db.JsonB // string[]
+  apiAvailable   Boolean  @default(false)
+  documentation  String?
+  promptExamples Json?    @db.JsonB // string[]
+  openSource     Boolean  @default(false)
+  primaryTask    String?
+  pricingModel   String?
+  subCategories  Json?    @db.JsonB // verbatim [{id,name,slug}]
+  createdAt      DateTime?
+  updatedAt      DateTime?
+  tasks          TaskModel[]
+}
+
+// Robot entity — verbatim from experiment/data/robots/raw.json for live /robots fetch.
+// (Task links live in TaskRobot; raw task refs stored in linkedTasks.)
+model Robot {
+  id             String   @id @default(cuid())
+  slug           String   @unique
+  name           String
+  logoUrl        String?
+  thumbnailUrl   String?
+  company        String?
+  country        String?
+  category       String? // SCREAMING_SNAKE raw verbatim (HUMANOID, DRONE, …)
+  availability   String?
+  price          String?
+  releaseDate    DateTime?
+  mainTask       String?  @db.Text
+  autonomyLevel  String?
+  primaryUseCases Json?   @db.JsonB // string[]
+  websiteUrl     String?
+  about          String?  @db.Text
+  specs          String?  @db.Text
+  linkedTasks    Json?    @db.JsonB // verbatim [{id,title,slug}]
+  createdAt      DateTime?
+  updatedAt      DateTime?
+  tasks          TaskRobot[]
+}
+
+// Device entity — verbatim from experiment/data/devices/raw.json for live /devices fetch.
+model Device {
+  id                String  @id @default(cuid())
+  slug              String  @unique
+  name              String
+  imageUrl          String?
+  manufacturer      String?
+  manufacturerSlug  String?
+  manufacturerLogo  String?
+  category          String?
+  availability      String?
+  price             String?
+  year              String?
+  month             String?
+  description       String? @db.Text
+  images            Json?   @db.JsonB // string[]
+  mainTask          String?
+  mainTaskColor     String?
+  formFactor        String?
+  country           String?
+  aiFeatures        Json?   @db.JsonB // string[]
+  primaryUseCases   Json?   @db.JsonB // string[]
+  buyUrl            String?
+  tasks             TaskDevice[]
+}
+
+model TaskTool {
+  taskId    String
+  toolId    String
+  isPopular Boolean @default(false) // live "Most popular" pill = popularTools[0], not toolItems[0]
+  popularRank Int? // index inside live popularTools[]; pill uses rank 0
+  position Int? // index inside live toolItems[]; tools table row order
+  task Task @relation(fields: [taskId], references: [id], onDelete: Cascade)
+  tool Tool @relation(fields: [toolId], references: [id], onDelete: Cascade)
+
+  @@id([taskId, toolId])
+  @@index([toolId])
+}
+
+model TaskModel {
+  taskId  String
+  modelId String
+  task  Task  @relation(fields: [taskId], references: [id], onDelete: Cascade)
+  model Model @relation(fields: [modelId], references: [id], onDelete: Cascade)
+
+  @@id([taskId, modelId])
+  @@index([modelId])
+}
+
+model TaskRobot {
+  taskId  String
+  robotId String
+  task  Task  @relation(fields: [taskId], references: [id], onDelete: Cascade)
+  robot Robot @relation(fields: [robotId], references: [id], onDelete: Cascade)
+
+  @@id([taskId, robotId])
+  @@index([robotId])
+}
+
+model TaskDevice {
+  taskId   String
+  deviceId String
+  task   Task   @relation(fields: [taskId], references: [id], onDelete: Cascade)
+  device Device @relation(fields: [deviceId], references: [id], onDelete: Cascade)
+
+  @@id([taskId, deviceId])
+  @@index([deviceId])
+}
+
+// Raw Repository — verbatim from experiment/data/repositories/raw.json for live /repositories fetch
+model Repository {
+  id             String   @id
+  slug           String   @unique
+  name           String
+  owner          String?
+  ownerAvatarUrl String?
+  description    String?  @db.Text
+  url            String?
+  homepage       String?
+  language       String?
+  license        String?
+  topics         Json?    @db.JsonB // string[]
+  stars          Int      @default(0)
+  forks          Int      @default(0)
+  openIssues     Int      @default(0)
+  logoUrl        String?
+  brandColor     String?
+  githubCreatedAt DateTime?
+  syncedAt       DateTime?
+  subCategories  Json?    @db.JsonB // verbatim [{id,name,slug}]
+  companySlug    String?
+
+  @@index([language])
+}
+
+// Raw MCP item — verbatim from experiment/data/mcps/raw.json for live /mcp fetch
+model Mcp {
+  id               String   @id
+  slug             String   @unique
+  name             String
+  itemType         String? // CLIENT | SERVER
+  shortDescription String?  @db.Text
+  fullDescription  String?  @db.Text
+  providerName     String?
+  providerUrl      String?
+  license          String?
+  pricingType      String? // FREE | FREEMIUM
+  isFeatured       Boolean  @default(false)
+  isVerified       Boolean  @default(false)
+  launchDate       DateTime?
+  lastUpdatedDate  DateTime?
+  websiteUrl       String?
+  documentationUrl String?
+  repositoryUrl    String?
+  qualityScore     Float?
+  easeOfUseScore   Float?
+  globalRank       Int?
+  leaderboardRank  Int?
+  editorialVerdict String?  @db.Text
+  viewCount        Int      @default(0)
+  monthlyVisits    String?
+  upvoteCount      Int      @default(0)
+  saveCount        Int      @default(0)
+  technicalSpecs   Json?    @db.JsonB
+  installationGuides Json?  @db.JsonB
+  useCases         Json?    @db.JsonB
+  categories       Json?    @db.JsonB // single {id,name,slug,…} object
+  subCategories    Json?    @db.JsonB // single {id,name,slug,…} object
+  tags             Json?    @db.JsonB // [{id,slug,name}]
+  features         Json?    @db.JsonB
+  pricingPlans     Json?    @db.JsonB
+  reviews          Json?    @db.JsonB
+  editorialReviews Json?    @db.JsonB
+  discussions      Json?    @db.JsonB
+  faqs             Json?    @db.JsonB
+  createdAt        DateTime?
+  updatedAt        DateTime?
+
+  @@index([itemType])
+}
+
+// Raw Agent — verbatim from experiment/data/agents/raw.json for live /agents fetch
+model Agent {
+  id               String   @id
+  slug             String   @unique
+  name             String
+  description      String   @db.Text
+  websiteUrl       String?
+  logoUrl          String?
+  category         String?
+  categorySlug     String?
+  primaryTask      String?
+  pricingModel     String? // FREE | FREEMIUM | PAID (raw verbatim)
+  pricingRaw       String? @db.Text
+  hasApi           Boolean  @default(false)
+  isOpenSource     Boolean  @default(false)
+  isTrending       Boolean  @default(false)
+  verified         Boolean  @default(false)
+  isVerified       Boolean  @default(false)
+  compatibility    Json?    @db.JsonB // string[]
+  source           String?
+  avgRating        Float?
+  reviewCount      Int      @default(0)
+  upvoteCount      Int      @default(0)
+  views            Int      @default(0)
+  shortDescription String?  @db.Text
+  longDescription  String?  @db.Text
+  features         Json?    @db.JsonB // string[]
+  useCases         Json?    @db.JsonB // string[]
+  integrations     Json?    @db.JsonB // string[]
+  apiDocsUrl       String?
+  githubUrl        String?
+  provider         String?
+  providerWebsite  String?
+  releaseDate      DateTime?
+  pros             Json?    @db.JsonB // string[]
+  cons             Json?    @db.JsonB // string[]
+  createdAt        DateTime?
+  updatedAt        DateTime?
+  ttasks           Json?    @db.JsonB // verbatim [{task:{slug,title}}]
+
+  @@index([categorySlug])
+  @@index([verified])
+}
+
+// News publisher — upserted from live /api/news sources map; articles link many-to-one
+model Source {
+  id        String  @id
+  name      String
+  domain    String?
+  color     String?
+  followers String?
+  logoUrl   String?
+  articles  News[]
+}
+
+// Raw News article — verbatim from experiment/data/news/raw.json for live /news fetch
+model News {
+  id           String   @id
+  slug         String   @unique
+  headline     String
+  dek          String?  @db.Text
+  aiSummary    String?  @db.Text
+  articleUrl   String?
+  category     String?
+  topics       Json?    @db.JsonB // string[]
+  sourceId     String?
+  source       Source?  @relation(fields: [sourceId], references: [id])
+  hours        Int      @default(0) // article age; smaller = newer
+  up           Int      @default(0)
+  down         Int      @default(0)
+  score        Int      @default(0)
+  filters      Json?    @db.JsonB // string[]
+  bookmarked   Boolean  @default(false)
+
+  @@index([category])
+  @@index([hours])
+  @@index([sourceId])
+}
+
+// Raw Video — verbatim from experiment/data/videos/raw.json for live /videos fetch.
+// Level is NOT stored: the reference UI derives it by hashing the video id.
+model Video {
+  id              String   @id
+  slug            String   @unique
+  title           String
+  description     String?  @db.Text
+  toolName        String?
+  toolCategory    String?
+  youtubeId       String?
+  thumbnail       String?
+  durationSeconds Int      @default(0)
+  views           Int      @default(0)
+  likes           Int      @default(0)
+  publishedAt     DateTime?
+  channelId       String?
+  tags            Json?    @db.JsonB // string[]
+  accent          String?
+  available       Boolean  @default(true)
+  companyId       String?
+  authorName      String?
+  authorAvatar    String?
+  createdAt       DateTime?
+  updatedAt       DateTime?
+
+  @@index([toolCategory])
+  @@index([publishedAt])
+}

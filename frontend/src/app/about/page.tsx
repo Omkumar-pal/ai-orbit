@@ -1,0 +1,2 @@
+export const metadata={title:"About | AI Orbit"};
+export default function Page(){return (<div className="mx-auto max-w-[1280px] px-4 py-10"><h1 className="text-2xl font-bold">About</h1><p className="mt-2 text-sm text-zinc-600">Our architecture, mission and how AI Orbit maps 24k companies + 533 models.</p><div className="mt-6 rounded-2xl border p-6 text-sm dark:border-zinc-800">Static replica of <code>/about</code> - content parity with live https://aiorbit.club/about. Wire forms to own Next.js API Routes.</div></div>);}

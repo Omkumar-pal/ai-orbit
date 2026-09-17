@@ -1,0 +1,12 @@
+{
+  "component": "robots",
+  "type": "flatArray",
+  "endpoint": "/api/v1/robots",
+  "totalRecords": 1199,
+  "downloadedRecords": 1199,
+  "requestsMade": 1,
+  "fileSizeBytes": 2100337,
+  "durationSeconds": 3.3,
+  "exhausted": true,
+  "downloadedAt": "2026-09-16T20:24:13.658Z"
+}
