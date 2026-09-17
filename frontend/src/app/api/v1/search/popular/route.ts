@@ -1,17 +1,20 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
+import { prisma } from "@/lib/prisma";
 
-// Own backend route — mirrors live workers.dev shape.
-// Later: replace demo with prisma.<model>.findMany() per aiorbit_schema.sql
-// Live reference: https://ai-orbit.palamrendra-pm.workers.dev/api/v1/search/popular
-
-export async function GET(req: NextRequest) {
-  const demo = {"popular":["AnswerThis","AnyClip","Aqua Voice","ARTSMART AI","Atlas","Anime AI"]};
-  // TODO: wire Prisma — e.g., prisma.company.findMany({ skip, take, where })
-  // For now return shape-compatible demo + pagination echo
-  const url = new URL(req.url);
-  const page = Number(url.searchParams.get("page") ?? 1);
-  const pageSize = Number(url.searchParams.get("pageSize") ?? url.searchParams.get("limit") ?? 24);
-  return NextResponse.json({ ...demo, page, pageSize }, {
-    headers: { "Cache-Control": "public, s-maxage=60" },
-  });
+// Popular searches — derived from our own top-upvoted tools (live returns a static list).
+// Shape mirrors live /api/v1/search/popular: { popular: string[] }
+export async function GET() {
+  try {
+    const top = await prisma.tool.findMany({
+      orderBy: [{ upvoteCount: "desc" }, { name: "asc" }],
+      take: 6,
+      select: { name: true },
+    });
+    return NextResponse.json(
+      { popular: top.map((t) => t.name) },
+      { headers: { "Cache-Control": "public, s-maxage=3600" } }
+    );
+  } catch (e: any) {
+    return NextResponse.json({ popular: [], error: e.message }, { status: 500, headers: { "Cache-Control": "no-store" } });
+  }
 }
